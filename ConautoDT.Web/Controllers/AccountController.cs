@@ -36,7 +36,7 @@ namespace TMS_MANTENIMIENTO.WEB.Controllers
 
         public async Task<ActionResult> Index(Login model)
         {
-            var request = new RestRequest("/api/cuentas/login", Method.Post/*, DataFormat.Json*/);
+            var request = new RestRequest("/api/Security/login", Method.Post/*, DataFormat.Json*/);
             request.AddJsonBody(new { email = model.User, password = model.Password });
             request.AddJsonBody(model);
             TempData["menu"] = null;

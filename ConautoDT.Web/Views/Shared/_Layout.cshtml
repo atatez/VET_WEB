@@ -8,10 +8,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> SISTEMA DE MANTENIMIENTO</title>
+    <title> ANIMAL PLACE </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/TMS_MANTENIMIENTO.WEB.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/TMSStyle.css" />
@@ -29,7 +28,7 @@
             <div class="container-fluid" >
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     @* <img src="/imagenes/ATCOTRANS2.png" alt="" width="100">*@
-                    Sistema de Mantenimiento
+                    Clinica Veterinaria Animal Place
                 </a>
 
                 @if (TempData["menu"] != null)
@@ -192,6 +191,17 @@
 
                 <li class="dropdown" style="width:100%;">
                     <a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-truck-flatbed"></i><span class="ms-1 d-none d-sm-inline"> Clientes</span>
+                    </a>
+                    <ul class="dropdown-menu text-small shadow" style="width:100%;" aria-labelledby="dropdown">
+                        <li><a class="dropdown-item" href="/Clientes/Index">Clientes</a></li>
+
+
+                    </ul>
+                </li>
+
+                <li class="dropdown" style="width:100%;">
+                    <a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-truck-flatbed"></i><span class="ms-1 d-none d-sm-inline"> Provincias</span>
                     </a>
                     <ul class="dropdown-menu text-small shadow" style="width:100%;" aria-labelledby="dropdown">
@@ -314,23 +324,9 @@
             </div>
 
         </div>
-        @* <div class="wrap p-t-0">
-        <footer class="app-footer">
-        <div class="clearfix">
-        <div class="copyright pull-left">Atcotrans @DateTime.Now.Year &copy;</div>
-        </div>
-        </footer>
-        </div>*@
+      
     </main>
 
-
-
-
-@*    <footer class="border-top footer text-center text-white bgi-position-y-bottom" style="background-color: #127C8C; ">
-        <div class="container .bg-info">
-            &copy;    @DateTime.Now.Year - SISTEMA DE MANTENIMIENTO
-        </div>
-    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
