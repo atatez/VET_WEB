@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 @model VET_ANIMAL.WEB.Models.ClientesViewModel
@@ -29,7 +30,7 @@
                     <button type="button" style="color: black" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
             </div>
-            <div class="col-md-6 float-left container-fluid h-custom" style="margin-top: 30%; margin-left: 5%; position:absolute">
+            <div class="col-md-6 float-left container-fluid h-custom" style="margin-top: 15%; margin-left: 5%; position:absolute">
                 <div class="row">
                     <!-- Gallery -->
                     <div class="row">
@@ -60,7 +61,7 @@
                 <div class="row col-md-6" style="margin-left: 45%;margin-top:2% ">
                     <div class="form-group col-md-12 ">
                         <label style="display: block; text-align: start" for="inputGroupSelect01">Nombres </label>
-                        <input type="text" id="nombreCliente" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese nombres del cliente" />
+                        <input type="text" asp-for="@Model.nombres" id="nombreCliente" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese nombres del cliente" />
                     </div>
                     @*<div class="form-group col-md-6 ">
                         <label style="display: block; text-align: start" for="inputGroupSelect01">Apellidos </label>
@@ -69,28 +70,28 @@
 
                     <div class="form-group col-md-12">
                         <label style="display: block; text-align: start" for="inputGroupSelect01">Cédula</label>
-                        <input type="text" id="cedCliente" style="width:100%; padding:5px; border:0.5px solid gray ; color: blue; text-align:center" placeholder="Ingrese cédula del cliente" required />
+                        <input type="text" asp-for="@Model.identificacion" id="cedCliente" style="width:100%; padding:5px; border:0.5px solid gray ; color: blue; text-align:center" placeholder="Ingrese cédula del cliente" required />
                     </div>
 
                     <div class="form-group col-md-12 ">
                         <label style="display: block; text-align: start" for="inputGroupSelect01">Dirección </label>
-                        <input type="text" id="dirCliente" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese dirección del cliente" />
+                        <input type="text" id="dirCliente" asp-for="@Model.direccion" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese dirección del cliente" />
                     </div>
 
                     <div class="form-group col-md-12">
                         <label style="display: block; text-align: start" for="inputGroupSelect01">Correo</label>
-                        <input type="text" id="correoCliente" style="width:100%; padding:5px; border:0.5px solid gray ; color: blue; text-align:center" placeholder="Ingrese correo del cliente" required />
+                        <input type="text" id="correoCliente" asp-for="@Model.correo" style="width:100%; padding:5px; border:0.5px solid gray ; color: blue; text-align:center" placeholder="Ingrese correo del cliente" required />
                     </div>
 
                     <div class="form-group col-md-12 ">
                         <label style="display: block; text-align: start" for="inputGroupSelect01">Teléfono </label>
-                        <input type="text" id="telfCliente" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese teléfono del cliente" />
+                        <input type="text" id="telefono" asp-for="@Model.telefono" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese teléfono del cliente" />
                     </div>
 
                     
                 </div>
                 <div class="modal-footer">
-                    <button  class="btn btn-success bi bi-save btn-grad btn-m" onclick="GuardarCliente()">Guardar</button>
+                    <button id="guardarInformacion" type="submit" class="btn btn-success bi bi-save btn-grad btn-sm"> Guardar </button>
                 </div>
             </form>
         </div>
@@ -99,16 +100,15 @@
 
 <!-- Modal Editar -->
 <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content " style="width:100%">
             <div class="modal-header TMSHeaderModal">
-                <h5 class="modal-title TMSTituloModal">Clientes</h5>
+                <h5 class="modal-title TMSTituloModal">Cliente</h5>
                 <div class="d-flex align-items-end flex-column">
                     <button type="button" style="color: black" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
-
             </div>
-            <div class="col-md-6 float-left container-fluid h-custom" style="margin-top: 30%; margin-left: 5%; position:absolute">
+            <div class="col-md-6 float-left container-fluid h-custom" style="margin-top: 15%; margin-left: 5%; position:absolute">
                 <div class="row">
                     <!-- Gallery -->
                     <div class="row">
@@ -139,7 +139,7 @@
                 <div class="row col-md-6" style="margin-left: 45%;margin-top:2% ">
                     <div class="form-group col-md-12 ">
                         <label style="display: block; text-align: start" for="inputGroupSelect01">Nombres </label>
-                        <input type="text" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese nombres del cliente" />
+                        <input type="text" asp-for="@Model.nombres" id="nombreCliente2" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese nombres del cliente" />
                     </div>
                     @*<div class="form-group col-md-6 ">
                     <label style="display: block; text-align: start" for="inputGroupSelect01">Apellidos </label>
@@ -148,28 +148,28 @@
 
                     <div class="form-group col-md-12">
                         <label style="display: block; text-align: start" for="inputGroupSelect01">Cédula</label>
-                        <input type="text" id="inspeccio" style="width:100%; padding:5px; border:0.5px solid gray ; color: blue; text-align:center" placeholder="Ingrese cédula del cliente" required />
+                        <input type="text" asp-for="@Model.identificacion" id="cedCliente2" style="width:100%; padding:5px; border:0.5px solid gray ; color: blue; text-align:center" placeholder="Ingrese cédula del cliente" required />
                     </div>
 
                     <div class="form-group col-md-12 ">
                         <label style="display: block; text-align: start" for="inputGroupSelect01">Dirección </label>
-                        <input type="text" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese dirección del cliente" />
+                        <input type="text" id="dirCliente2" asp-for="@Model.direccion" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese dirección del cliente" />
                     </div>
 
                     <div class="form-group col-md-12">
                         <label style="display: block; text-align: start" for="inputGroupSelect01">Correo</label>
-                        <input type="text" id="inspeccio" style="width:100%; padding:5px; border:0.5px solid gray ; color: blue; text-align:center" placeholder="Ingrese correo del cliente" required />
+                        <input type="text" id="correoCliente2" asp-for="@Model.correo" style="width:100%; padding:5px; border:0.5px solid gray ; color: blue; text-align:center" placeholder="Ingrese correo del cliente" required />
                     </div>
 
                     <div class="form-group col-md-12 ">
                         <label style="display: block; text-align: start" for="inputGroupSelect01">Teléfono </label>
-                        <input type="text" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese teléfono del cliente" />
+                        <input type="text" id="telfCliente2" asp-for="@Model.telefono" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese teléfono del cliente" />
                     </div>
 
 
                 </div>
                 <div class="modal-footer">
-                    <button id="guardarInformacion" type="submit" class="btn btn-success bi bi-save btn-grad btn-m">Guardar</button>
+                    <button id="guardarInfo2" type="submit" class="bi bi-pen btn btn-primary  btn-sm"> Editar </button>
                 </div>
             </form>
         </div>
@@ -183,21 +183,21 @@
     <div class="modal-dialog">
         <div class="modal-content " style="width:100%">
             <div class="modal-header TMSHeaderModal">
-                <h5 class="modal-title TMSTituloModal">TMS Mantenimiento</h5>
+                <h5 class="modal-title TMSTituloModal">ANIMAL PLACE</h5>
                 <div class="d-flex align-items-end flex-column">
                     <button type="button" style="color: black" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
             </div>
-            <form asp-action="DeleteInformacion">
+            <form asp-action="DeleteInformacionC">
 
 
                 <div class="modal-body ">
                     <div hidden class="form-outline mb-4">
                         <label class="form-label btn-color-info TMSlabelText">Id</label>
-                        <input type="text" asp-for="@Model.idCliente" id="idCiudadEliminar" class="form-control form-control-lg  TMSTextBoxValores" />
+                        <input type="text" asp-for="@Model.idCliente" id="idClienteEliminar" class="form-control form-control-lg  TMSTextBoxValores" />
                     </div>
                     <div class="form-outline mb-4">
-                        <label class="form-label btn-color-info TMSlabelText" style="margin-top:28px; font-size:13px">¿Está seguro de querer eliminar esta Ciudad?</label>
+                        <label class="form-label btn-color-info TMSlabelText" style="margin-top:28px; font-size:13px">¿Está seguro de querer eliminar este Cliente?</label>
                     </div>
                 </div>
 
@@ -225,9 +225,9 @@
 
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-sm  dataTable" id="tablaLlantas">
+                    <table class="table table-bordered table-sm  dataTable table-striped" id="tablaLlantas">
 
-                        <thead>
+                        <thead >
                             <tr>
                                 <th>
                                     Id
@@ -261,7 +261,7 @@
                                 @foreach (var item in Model.ListaClientes)
                                 {
 
-                                    @Html.HiddenFor(model => item.idMascota)
+                                    @Html.HiddenFor(model => item.idCliente)
 
                                     <tr>
 
@@ -286,11 +286,11 @@
                                         </td>
                                        
                                         <td>
-                                            <button title="Editar Cliente" class="btn p-v-sm btn-success btn-sm" id="btnEditar" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="editar();">
+                                            <button title="Editar Cliente" class="btn p-v-sm btn-success btn-sm btn-editar" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="editarCliente({idCliente:@item.idCliente ,nombres:'@item.nombres',direccion:'@item.direccion',telefono:'@item.telefono',correo:'@item.correo',identificacion:'@item.identificacion'});">
                                                 <i class="bi bi-pen"></i>
                                             </button>
 
-                                            <button title="Eliminar Cliente" class="btn p-v-sm btn-danger btn-sm" id="btnEliminar" data-bs-toggle="modal" data-bs-target="#eliminarModal" onclick="eliminarCiudad();">
+                                            <button title="Eliminar Cliente" class="btn p-v-sm btn-danger btn-sm" id="btnEliminar" data-bs-toggle="modal" data-bs-target="#eliminarModal" onclick="eliminarCliente({idCliente:@item.idCliente});">
                                                 <i class="bi bi-trash"></i>
                                             </button>
 
@@ -355,203 +355,55 @@
     <script src="~/Content/bootstrap.js"></script>
     <script src="~/Content/modernizr-2.8.3.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-
     <script type="text/javascript">
         var table;
-        // var inputElement = document.getElementById("Descripcion1");
-        //var inputElement2 = document.getElementById("TipoColor1");
-        //$(document).ready(function () {
-        //    $('#tablaCiudades').DataTable();
-        //});
+        $(document).ready(function () {
+            $('#tablaLlantas').DataTable();
+        });
 
-
-        //function editar(Ciudad) {
-        //    console.log(Ciudad);
-        //    $('#idCiudad').val(Ciudad.idCiudad);
-        //    $('#descripcion2').val(Ciudad.descripcion);
-        //    console.log($('#descripcion').val());
-        //    $('#idProvincia').val(Ciudad.idProvincia);
-        //}
+        function editarCliente(Cliente) {
+            console.log(Cliente);
+            $('#nombreCliente2').val(Cliente.nombres);
+            $('#cedCliente2').val(Cliente.identificacion);
+            $('#dirCliente2').val(Cliente.direccion);
+            $('#correoCliente2').val(Cliente.correo);
+            $('#telfCliente2').val(Cliente.telefono);
+  
+        }
         $(document).ready(function () {
             $('#tablaCiudades').DataTable();
         });
 
-        function GuardarCliente() {
+        //function eliminarCiudad(guia) {
+        //    console.log(guia);
 
-            
-
-                var arregloRuta = [];
-
-               
-                var nombres = $("#nombreCliente").val();
-                var cedula = $("#cedCliente").val();
-                var direccion = $("#dirCliente").val();
-                var telefono = $("#telfCliente").val();
-                var correo = $("#correoCliente").val();
-               
-                var tipo = {
-                    "nombres": nombres,
-                    "identificacion": cedula,
-                    "direccion": direccion,
-                    "telefono": telefono,
-                    "correo": correo,
-                    
-                };
-
-                arregloRuta.push(tipo);
-                console.log(arregloRuta);
-                var json = JSON.stringify(arregloRuta);
+        //    $("#idCiudadEliminar").val(guia.idCiudad);
 
 
-                $.ajax({
-                    url: '@Url.Action("GuardarClientes","Clientes")',
-                    type: "POST",
-                    dataType: 'json',
-                    data: { json: json },
-                    success: function (result) {
-                        console.log(result);
-                       
-                        
-
-                        // Mostrar un mensaje emergente de éxito
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Éxito',
-                            text: 'Se cambió los térmicos de manera exitosa',
-                            showConfirmButton: false, // Sin botón de aceptar
-                            timer: 1500 // Cerrar después de 1.5 segundos
-                        }).then(() => {
-                            // Continuar con el resto de la función aquí
-                            
-                        });
-                    },
-                    error: function (errormessage) {
-                        console.log("no hay");
-                    }
-                });
+        //    //   $("#eliminarModal").modal({ backdrop: 'static', keyboard: false });
 
 
+        //}
+        function nuevo() {
+            $("#idProvincia").val(0);
+            $("#bgcolor-input").val("");
+        }
+        //function eliminar(Ciudad) {
+        //    console.log(Ciudad);
+        //    $('#idCiudad').val(Ciudad.idCiudad);
 
-             
+
+        //}
+        function eliminarCliente(guia) {
+            console.log(guia);
+
+            $("#idClienteEliminar").val(guia.idCliente);
 
 
-
-            
+            //   $("#eliminarModal").modal({ backdrop: 'static', keyboard: false });
 
 
         }
-
-       
-
-
-        //$("#guardarInformacion").click(function () {
-        //    var dato1 = $('#IdColor1').val();
-        //    var dato2 = $('#Descripcion1').val();
-        //    var dato3 = "Llanta";
-        //    var data4 = 0;
-
-
-        //    if (dato1 == "") {
-        //        dato4 = 0;
-
-        //    } else {
-        //        dato4 = $('#IdColor1').val();
-
-        //    }
-
-        //    //alert("erro");
-        //    if (dato2 == "") {
-
-        //        inputElement.style.border = "1px solid red";
-        //        inputElement.style.border = "1px solid red";
-        //        inputElement.style.borderRadius = "5px";
-
-
-
-        //    } else {
-
-        //        inputElement.style.border = "1px solid #ced4da";
-
-
-
-        //    }
-
-
-
-        //    //if (dato3 == "") {
-        //    //    inputElement2.style.border = "1px solid red";
-        //    //    inputElement2.style.border = "1px solid red";
-        //    //    inputElement2.style.borderRadius = "5px";
-
-
-        //    //}else{
-
-
-        //    //    inputElement2.style.border = "1px solid #ced4da";
-
-        //    //}
-
-        //    // alert($('#Descripcion1').val());
-        //    //alert($('#TipoColor1').val());
-
-
-
-
-
-        //    //            alert(datos);
-
-        //    //          alert(JSON.stringify(datos));
-
-
-
-        //    if (dato2 != "") {
-        //        var arregloInfo = [];
-        //        var datosInfo = {
-        //            "descripcion": dato2,
-        //            "idColor": dato1,
-        //            "tipoColor": "Llanta"
-
-        //        };
-
-        //        datosInfo.descripcion = $('#Descripcion1').val();
-        //        datosInfo.idColor = dato4;
-        //        datosInfo.tipoColor = "Llanta";
-        //        arregloInfo.push(datosInfo);
-        //        var json = JSON.stringify(arregloInfo);
-
-        //        $.ajax({
-        //            url: '@Url.Action("GuardaryEditarInfo","Provincia")',
-        //            data: { json: json },
-        //            type: "POST",
-        //            dataType: "json",
-        //            success: function (result) {
-        //                $('#ClienteModal').modal('hide');
-        //                if (result.data == "ok") {
-        //                    alertify.success("Se Guardo la Color correctamente.");
-        //                    table._fnAjaxUpdate(null, false);
-        //                } else {
-        //                    alert.error(result.msg);
-        //                }
-        //            },
-        //            error: function (errormessage) {
-        //                aler.error("Error al guardar la Color. Intente de nuevo.");
-        //            }
-        //        });
-
-        //    }
-
-
-
-
-        //    //alert("HOLA");
-
-        //});
-
-        
-
-
-
-
 
     </script>
 
