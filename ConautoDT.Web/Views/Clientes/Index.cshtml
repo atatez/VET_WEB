@@ -22,7 +22,7 @@
 
 <!-- Modal Guardar-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-ml">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content " style="width:100%">
             <div class="modal-header TMSHeaderModal">
                 <h5 class="modal-title TMSTituloModal">Cliente</h5>
@@ -30,11 +30,11 @@
                     <button type="button" style="color: black" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
             </div>
-            <div class="col-md-8 float-left container-fluid h-custom" style="margin-top: 30%; margin-left: 5%; position:absolute">
+            <div class="col-md-6 float-left container-fluid h-custom" style="margin-top: 15%; margin-left: 5%; position:absolute">
                 <div class="row">
                     <!-- Gallery -->
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="col-lg-4 col-md-6 mb-4">
                             <img src="~/imagenes/dueño1.jpg"
                                  class="w-100 shadow-1-strong rounded mb-4"
                                  alt="Boat on Calm Water" />
@@ -44,54 +44,54 @@
                                  alt="Wintry Mountain Landscape" />
                         </div>
 
-                        @*<div class="col-lg-4 col-md-6 mb-4">
-                        <img src="~/imagenes/dueño2.jpg"
-                        class="w-100 shadow-1-strong rounded mb-4"
-                        alt="Boat on Calm Water" />
-                        <img src="~/imagenes/dueño2.jpg"
-                        class="w-100 shadow-1-strong rounded mb-4"
-                        alt="Boat on Calm Water" />
-                        </div>*@
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <img src="~/imagenes/dueño2.jpg"
+                                 class="w-100 shadow-1-strong rounded mb-4"
+                                 alt="Boat on Calm Water" />
+                            <img src="~/imagenes/dueño2.jpg"
+                                 class="w-100 shadow-1-strong rounded mb-4"
+                                 alt="Boat on Calm Water" />
+                        </div>
                     </div>
                 </div>
             </div>
 
             <form asp-action="GuardaryEditarInfo">
 
-                <div class="row col-md-12" style="margin-left: 30%;margin-top: 2%">
+                <div class="row col-md-6" style="margin-left: 45%;margin-top:2% ">
+                    <div class="form-group col-md-12 ">
+                        <label style="display: block; text-align: start" for="inputGroupSelect01">Nombres </label>
+                        <input type="text" asp-for="@Model.nombres" id="nombreCliente" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese nombres del cliente" />
+                    </div>
+                    @*<div class="form-group col-md-6 ">
+                        <label style="display: block; text-align: start" for="inputGroupSelect01">Apellidos </label>
+                        <input type="text" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" />
+                    </div>*@
 
                     <div class="form-group col-md-12">
-                        <label for="nombreCliente">Nombres</label>
-                        <input type="text" asp-for="@Model.nombres" style="color: blue;" id="nombreCliente" class="form-control" placeholder="Ingrese nombres del cliente" />
+                        <label style="display: block; text-align: start" for="inputGroupSelect01">Cédula</label>
+                        <input type="text" asp-for="@Model.identificacion" id="cedCliente" style="width:100%; padding:5px; border:0.5px solid gray ; color: blue; text-align:center" placeholder="Ingrese cédula del cliente" required />
+                    </div>
+
+                    <div class="form-group col-md-12 ">
+                        <label style="display: block; text-align: start" for="inputGroupSelect01">Dirección </label>
+                        <input type="text" id="dirCliente" asp-for="@Model.direccion" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese dirección del cliente" />
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label style="display: block; text-align: start" for="inputGroupSelect01">Correo</label>
+                        <input type="text" id="correoCliente" asp-for="@Model.correo" style="width:100%; padding:5px; border:0.5px solid gray ; color: blue; text-align:center" placeholder="Ingrese correo del cliente" required />
+                    </div>
+
+                    <div class="form-group col-md-12 ">
+                        <label style="display: block; text-align: start" for="inputGroupSelect01">Teléfono </label>
+                        <input type="text" id="telefono" asp-for="@Model.telefono" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese teléfono del cliente" />
                     </div>
 
                     
-
-                    <div class="form-group col-md-12">
-                        <label for="cedCliente">Cédula</label>
-                        <input type="text" asp-for="@Model.identificacion" style="color: blue;" id="cedCliente" class="form-control" placeholder="Ingrese cédula del cliente" required />
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label for="dirCliente">Dirección</label>
-                        <input type="text" asp-for="@Model.direccion" style="color: blue;"id="dirCliente" class="form-control" placeholder="Ingrese dirección del cliente" />
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label for="correoCliente">Correo</label>
-                        <input type="text" asp-for="@Model.correo" style="color: blue;" id="correoCliente" class="form-control" placeholder="Ingrese correo del cliente" required />
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label for="telefono">Teléfono</label>
-                        <input type="text" asp-for="@Model.telefono" style="color: blue;" id="telefono" class="form-control" placeholder="Ingrese teléfono del cliente" />
-                    </div>
-
                 </div>
                 <div class="modal-footer">
-                    <button id="guardarInformacion" type="submit" class="btn btn-success btn-grad btn-sm">
-                        Guardar
-                    </button>
+                    <button id="guardarInformacion" type="submit" class="btn btn-success bi bi-save btn-grad btn-sm"> Guardar </button>
                 </div>
             </form>
         </div>
@@ -100,7 +100,7 @@
 
 <!-- Modal Editar -->
 <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-ml">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content " style="width:100%">
             <div class="modal-header TMSHeaderModal">
                 <h5 class="modal-title TMSTituloModal">Cliente</h5>
@@ -108,11 +108,11 @@
                     <button type="button" style="color: black" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
             </div>
-            <div class="col-md-8 float-left container-fluid h-custom" style="margin-top: 35%; margin-left: 5%; position:absolute">
+            <div class="col-md-6 float-left container-fluid h-custom" style="margin-top: 15%; margin-left: 5%; position:absolute">
                 <div class="row">
                     <!-- Gallery -->
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="col-lg-4 col-md-6 mb-4">
                             <img src="~/imagenes/dueño1.jpg"
                                  class="w-100 shadow-1-strong rounded mb-4"
                                  alt="Boat on Calm Water" />
@@ -122,56 +122,56 @@
                                  alt="Wintry Mountain Landscape" />
                         </div>
 
-                        @*<div class="col-lg-4 col-md-6 mb-4">
+                        <div class="col-lg-4 col-md-6 mb-4">
                             <img src="~/imagenes/dueño2.jpg"
                                  class="w-100 shadow-1-strong rounded mb-4"
                                  alt="Boat on Calm Water" />
                             <img src="~/imagenes/dueño2.jpg"
                                  class="w-100 shadow-1-strong rounded mb-4"
                                  alt="Boat on Calm Water" />
-                        </div>*@
+                        </div>
                     </div>
                 </div>
             </div>
+
             <form asp-action="GuardaryEditarInfo">
 
-                <div class="row col-md-12" style=" margin-left: 35%;margin-top:2%;margin-top: 2%">
+                <div class="row col-md-6" style="margin-left: 45%;margin-top:2% ">
+                    <div class="form-group col-md-12 ">
+                        <label style="display: block; text-align: start" for="inputGroupSelect01">Nombres </label>
+                        <input type="text" asp-for="@Model.nombres" id="nombreCliente2" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese nombres del cliente" />
+                    </div>
+                    @*<div class="form-group col-md-6 ">
+                    <label style="display: block; text-align: start" for="inputGroupSelect01">Apellidos </label>
+                    <input type="text" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" />
+                    </div>*@
 
                     <div class="form-group col-md-12">
-                        <label for="nombreCliente">Nombres</label>
-                        <input type="text" asp-for="@Model.nombres" style="color: blue;" id="nombreCliente2" class="form-control" placeholder="Ingrese nombres del cliente" />
+                        <label style="display: block; text-align: start" for="inputGroupSelect01">Cédula</label>
+                        <input type="text" asp-for="@Model.identificacion" id="cedCliente2" style="width:100%; padding:5px; border:0.5px solid gray ; color: blue; text-align:center" placeholder="Ingrese cédula del cliente" required />
                     </div>
 
-
-
-                    <div class="form-group col-md-12">
-                        <label for="cedCliente">Cédula</label>
-                        <input type="text" asp-for="@Model.identificacion" style="color: blue;" id="cedCliente2" class="form-control" placeholder="Ingrese cédula del cliente" required />
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label for="dirCliente">Dirección</label>
-                        <input type="text" asp-for="@Model.direccion" style="color: blue;"id="dirCliente2" class="form-control" placeholder="Ingrese dirección del cliente" />
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label for="correoCliente">Correo</label>
-                        <input type="text" asp-for="@Model.correo" style="color: blue;" id="correoCliente2" class="form-control" placeholder="Ingrese correo del cliente" required />
+                    <div class="form-group col-md-12 ">
+                        <label style="display: block; text-align: start" for="inputGroupSelect01">Dirección </label>
+                        <input type="text" id="dirCliente2" asp-for="@Model.direccion" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese dirección del cliente" />
                     </div>
 
                     <div class="form-group col-md-12">
-                        <label for="telefono">Teléfono</label>
-                        <input type="text" asp-for="@Model.telefono" style="color: blue;" id="telfCliente2" class="form-control" placeholder="Ingrese teléfono del cliente" />
+                        <label style="display: block; text-align: start" for="inputGroupSelect01">Correo</label>
+                        <input type="text" id="correoCliente2" asp-for="@Model.correo" style="width:100%; padding:5px; border:0.5px solid gray ; color: blue; text-align:center" placeholder="Ingrese correo del cliente" required />
                     </div>
+
+                    <div class="form-group col-md-12 ">
+                        <label style="display: block; text-align: start" for="inputGroupSelect01">Teléfono </label>
+                        <input type="text" id="telfCliente2" asp-for="@Model.telefono" style="width: 100%; padding: 5px; border: 0.5px solid gray; color: blue; text-align: center" placeholder="Ingrese teléfono del cliente" />
+                    </div>
+
 
                 </div>
                 <div class="modal-footer">
-                    <button id="guardarInformacion" type="submit" class="btn btn-success btn-grad btn-sm">
-                        Guardar
-                    </button>
+                    <button id="guardarInfo2" type="submit" class="bi bi-pen btn btn-primary  btn-sm"> Editar </button>
                 </div>
             </form>
-            
         </div>
     </div>
 </div>
